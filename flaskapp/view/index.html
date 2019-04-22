@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Russo One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+    button{
+      outline: none;
+      font-family: 'Ubuntu';
+      border-radius: 18px;
+      border-color: #92B1CD;
+      background-color: #FFFFFF;
+      border-style: solid;
+
+    }
+    h1 {
+      font-family: 'Russo One';
+      background-color: #92B1CD;
+      text-shadow: 2px 3px 4px #535353;
+    }
+    h5 {
+      font-family: 'Russo One';
+      color: #424242;
+    }
+    body{
+      background-color: #FFFEF0;
+    }
+       .card{
+      background-color: #FAFAD2;
+      border-radius: 24px;
+      width : 83%;
+      margin: 0 auto;
+      float: none;
+    }
+      .tip{
+    font-family: 'Ubuntu';
+  }
+
+    </style>
+  
+  </head>
+  <title>Polite-O-Meter</title>
+
+  <div  id="heading" onclick="window.location.href='/'">
+    <h1 class="p-3 mb-2 text-white">Polite-O-Meter</h1>
+  </div>
+
+  <body id="intro">
+      <h5 class="mt-5 mb-5" align="center">Hello, welcome to Polite-o-meter. What would you like to practise today?</h5>
+
+        <form action="/record" method="POST" align="center">
+           <button id = "first" type="submit" name = "scene" value="1" class="mt-2 w-50"> Rejecting an offer/assignment/...</button>
+           <button id = "second"  type="submit"  name = "scene" value="2" class="mt-2 w-50">Asking for a vacation/promotion/...</button>
+           <button id = "third" type="submit" name = "scene" value="3" class="mt-2 w-50">Showing support/praising others/...</button>  
+           <button id = "fourth"  type="submit" name = "scene" value="4"  class="mt-2 w-50">Self affirmation</button>
+           <button id = "fifth"  type="submit" name = "scene" value="5" class="mt-2 w-50">Raising a question</button>
+           <button id = "sixth"  type="submit" name = "scene" value="6" class="mt-2 w-50">Showing surprise</button>
+        </form>
+
+        <div class= "mt-5 card">
+                      <h5 class="mt-3 tips" align="center"> <i class="material-icons " style="font-size:22px">public</i></i> About us </h5>
+                <p class="tip" align="center">Polite-O-Meter utilizes Machine Learning in training the logistic model which could return a percentage of politeness level. Our dataset contains a total of 272 audios, including 16 neutral audios, 128 polite audios and 128 impolite audios. In order to deal with voice differences among different people, we ask for a neutral audio at first during microphone testing as reference. To help you improve politeness in different professional situations, we also provide different scenarios. According to logistic prediction, we have an accuracy of 78.12%. Hope you enjoy it!</p>
+            </div>
+  </body>
+
+</html>
+<script>
+  document.getElementById('first').onclick = function() {
+    console.log("set 1");
+    localStorage.setItem("scene", 1);
+  };
+  document.getElementById('second').onclick = function() {
+        console.log("set ");
+
+    localStorage.setItem("scene", 2);
+  };
+    document.getElementById('third').onclick = function() {
+    localStorage.setItem("scene", 3);
+  };
+    document.getElementById('fourth').onclick = function() {
+    localStorage.setItem("scene", 4);
+  };
+    document.getElementById('fifth').onclick = function() {
+    localStorage.setItem("scene", 5);
+  };
+    document.getElementById('sixth').onclick = function() {
+    localStorage.setItem("scene", 6);
+  };
+</script>
+
+
+

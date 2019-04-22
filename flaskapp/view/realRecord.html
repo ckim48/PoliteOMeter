@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+  <head>
+    {{ JSGlue.include() }}
+    <meta charset="UTF-8">
+    <html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Russo One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+    button{
+      outline: none;
+      font-family: 'Ubuntu';
+      color: #FFFFFF;
+      width: 180px;
+      border-radius: 17.5px;
+      background-color: #92B1CD;
+	  border-style: solid;
+	  display: inline-block;
+
+    }
+    h1 {
+      font-family: 'Russo One';
+      background-color: #92B1CD;
+      text-shadow: 2px 3px 4px #535353;
+    }
+   .please {
+      font-size : 32px;
+      font-family: 'Russo One';
+      color: #424242;
+    }
+    .scenei{
+            font-size : 25px;
+      font-family: 'Russo One';
+      color: #00CC66;
+    }
+    .scenei2{
+        font-size : 25px;
+      font-family: 'Russo One';
+      color: #424242;
+    }
+    h4{
+      font-family: 'Russo One';
+      color: #424242;
+    
+    }
+     body{
+      background-color: #FFFEF0;
+    }
+    body > .card{
+      border-radius: 24px;
+   	  background-color: #FFFFFF;
+   	  width : 50%;
+   	  margin: 0 auto;
+      float: none;
+      margin-bottom: 10px;
+
+    }
+    p {
+    	font-family: 'Ubuntu';
+    	color : #2b2b2b;
+    }
+    img{
+      margin-top: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 20% ;
+      height: 20% ;
+    }
+ 
+
+    </style>
+  
+  </head>
+
+    <title>Polite-O-Meter</title>
+      <div  id="heading" onclick="window.location.href='/'">
+        <h1 class="p-3 mb-2 text-white">Polite-O-Meter</h1>
+      </div>
+
+
+		<body>
+<!--       <div  id = "recordBody" > -->
+        <p class="mt-5 please" align= "center" id="beforeRecord">Please record your speech on your chosen topic</p>
+            <p class = "scenei2" align= "center">Your Chosen scenario is </p> <h5 class="scenei" align= "center" id="sceneInfo"></h5>
+  		    <div class = "mt-5 card" id = "recordBody">
+  				<div class="card-body">
+<!--   		    		<img src="/Users/CK/downloads/microphone2.png" id="microphone">  -->   	
+  		    		<img src="{{ url_for('static', filename="images/microphone2.png")}}" id="microphone">   
+  		    		<button type="button" id="realRecordButton" class="mt-5 float-md-right"> Start Recording </button> 	
+
+  		    	</div>
+  		    </div>
+<!--       <div> -->
+		</body>
+
+   
+
+<ol id="recordingsList"></ol>
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+<script src="{{ url_for('static', filename="js/app.js")}}"></script>
+<script>
+  console.log(localStorage.getItem('scene'));
+if(localStorage.getItem('scene')=='1'){
+  console.log("1");
+document.getElementById('sceneInfo').innerHTML = "Rejecting an offer/assignment/.."
+}else if(localStorage.getItem('scene')=='2'){
+   console.log("1");
+document.getElementById('sceneInfo').innerHTML  = "Asking for a vacation/promotion/.."
+
+}else if(localStorage.getItem('scene')=='3'){
+   console.log("1");
+document.getElementById('sceneInfo').innerHTML  = "Showing support/praising others/..."
+
+}else if(localStorage.getItem('scene')=='4'){
+   console.log("1");
+document.getElementById('sceneInfo').innerHTML  = "Self affirmation"
+
+}else if(localStorage.getItem('scene')=='5'){
+   console.log("1");
+document.getElementById('sceneInfo').innerHTML = "Rasing a question"
+
+}else if(localStorage.getItem('scene')=='6'){
+   console.log("1");
+document.getElementById('sceneInfo').innerHTML  = "Showing surprise"
+
+}
+</script>

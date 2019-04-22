@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="CSS/styles.css"> -->
+    <link href='https://fonts.googleapis.com/css?family=Russo One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+      body{
+
+        background: linear-gradient(90deg, #dee8eb 50%, #FFFEF0 50%);
+      }
+    button{
+      font-family: 'Ubuntu';        
+    }
+    .bt1{
+      width: 200px;
+      height: 50px;
+      border-radius: 0px;  
+      border-color: #92B1CD;
+      background-color: #FFFFFF;
+    }
+    .bt2{
+      width: 200px;
+      height: 50px;
+      border-radius: 0px ;   
+      border color: #92B1CD ;
+      background-color: #92B1CD;
+    }
+    .tooltip {
+        fill: white;
+        stroke: #000;
+    }
+    #graph{
+      width:100%
+      height:100%;
+    }
+    #graph2{
+      width:100%
+      height:100%;
+    }
+    .overlay {
+        fill: none;
+        pointer-events: all;
+    }
+
+    .focus circle {
+        fill: #660033;
+    }
+
+    .focus text {
+        font-size: 14px;
+    }
+    .focus2 circle {
+        fill:   #994C00;
+    }
+
+    .focus2 text {
+        font-size: 14px;
+    }
+
+    h1 {
+      font-family: 'Russo One';
+      background-color: #92B1CD;
+      text-shadow: 2px 3px 4px #535353;
+    }
+    h2{
+      font-family: 'Russo One';
+      color: #2B2B2B;
+      
+      display: inline-block; 
+      align-content: "center";
+    }
+   h5 {
+      font-family: 'Russo One';
+      color: #424242;
+    }
+  div.tooltip { 
+      position: absolute;     
+      text-align: center;     
+      width: 60px;          
+      height: 28px;         
+      padding: 2px;       
+      font: 12px sans-serif;    
+      background: lightsteelblue; 
+      border: 0px;    
+      border-radius: 8px;     
+      pointer-events: none;     
+  }
+
+    p {
+      font-family: 'Ubuntu';
+      color : #2b2b2b;
+    }
+
+    .dataV{
+      font-family: 'Ubuntu';  
+      color: #660033;
+      font-weight: bold;
+    }
+
+    .dataP{
+      font-family: 'Ubuntu';  
+      color: #994C00;
+      font-weight: bold;
+    }
+
+    .line {
+    fill: none;
+    stroke: #FEC914;
+    stroke-width: 2px;
+    }
+ 
+     audio {
+
+      width: 400px;
+     }
+
+     #outer
+      {
+          width:100%;
+          text-align: center;
+      }
+    .inner
+    {
+        display: inline-block;
+    }
+    .VolumeH{
+      color: #957CF6;
+    }
+    .PitchH{
+      color:#FEC914; 
+    }
+
+    .split {
+      height: 100%;
+      width: 50%;
+
+      overflow-x: hidden;
+    }
+      .left {
+        height: 100%;
+        float: left;
+        width: 50%;
+        background: #dee8eb;
+      }
+
+      .right {
+        height: 100%;
+        float: right;
+
+        width: 50%;
+        background: #FFFEF0;
+      }
+
+     .centered {
+       text-align: center;
+     }
+     #heading{
+      width: :100%;
+     }
+          #outer
+      {
+          width:100%;
+          text-align: center;
+      }
+    .inner
+    {
+        display: inline-block;
+    }
+    .fixing{
+
+      left:5%;
+      position:relative;
+     }
+   .tips{
+      font-family: 'Russo One';
+    }
+      .tip{
+    font-family: 'Ubuntu';
+  }
+    .card{
+      border-radius: 24px;
+      background-color: #FFFFFF;
+      width : 80%;
+      margin: 0 auto;
+      float: none;
+    }
+
+      header{display:block}
+     .bg-indigo { background: #dee8eb; }
+     .bg-ywhite{background: #FFFEF0;}
+     @media (min-width: 768px) {
+          .h-md-100 { height: 100vh; }
+      }
+    </style>
+  
+  </head>
+
+    <title>Polite-O-Meter</title>
+    <header>
+      <h1 class="p-3 mb-3 text-white" onclick="window.location.href='/'" >Polite-O-Meter</h1>
+    </header> 
+
+    <body>
+
+      <!-- First Half -->
+  <div class="col-md-6 left centered">
+              <div align="center">
+                <h2 >You are&nbsp;</h2> <h2  id="politeScore">{{score}}</h2><h2 id="percentage">% polite</h2>
+              </div>
+                <p>Hover to see specific information </p>
+                <h4 class="VolumeH" align="center">Volume</h4>
+                  <div id="graph"></div>
+                  <div id = "dataV" class="mb-2 dataV" align="center"></div>
+                <h4 class="PitchH" align="center" >Pitch </h4>
+                  <div id="graph2"> </div>
+                  <div id = "dataP" class="dataP" align="center" >Pitch: </div>
+  </div>
+
+<!-- Second Half -->
+
+  <div class="col-md-6 right centered" >
+      <div class="mt-5 fixing">
+          <audio  class = "mt-5" id="player" controls src="{{ url_for('static', filename=""+path)}}" ></audio>
+            <h5 class ="mt-5" >Suggestion</h5>
+              <p id="volumeMono"> </p>
+              <p id="pitchTony"> </p>
+              <div class ="mt-5" id="outer">
+                <div class="inner"><button type="button" class="button bt1" onclick = "window.location.href='/realRecord'"> Record Again</button></div>
+              <div class="inner"><button type="button" class="button bt2" onclick = "window.location.href='/'" > Try Different Scenario</button></div>
+            </div>
+
+              <div class= "mt-5 card">
+                      <h5 class="mt-3 tips">  <i class="mr-1 fa fa-lightbulb-o" style="font-size:28px"></i> Tips for politeness </h5>
+                <p class="tip">1. Among polite audios, 70% have lower maximum volume.</p>
+                <p class="tip">2. More change in pitch in certain scenarios shows your excitement.</p>
+            </div>  
+      </div>
+     
+  </div>
+    
+
+
+    </body>
+    
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+<script src="{{ url_for('static', filename="js/app.js")}}"></script>
+<!-- <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script> -->
+<!-- <script src="js/app.js"></script> -->
+
+<script>
+
+if(document.getElementById("politeScore").innerHTML>50){
+  document.getElementById("politeScore").style.color ="#6CC846";
+  document.getElementById("percentage").style.color ="#6CC846";
+}else{
+  document.getElementById("politeScore").style.color ="#FF0000";
+  document.getElementById("percentage").style.color ="#FF0000";
+}
+if({{mono}}<180){
+  document.getElementById("volumeMono").innerHTML = "Please be more confident with your voice!"
+  document.getElementById("volumeMono").style.color ="#007FFF";
+}else{
+  document.getElementById("volumeMono").innerHTML = "Good job! Your volume is satisfied"
+  document.getElementById("volumeMono").style.color ="#6CC846";
+}
+if({{tony}} < 500){
+  document.getElementById("pitchTony").innerHTML = "It would be great if you have higher tone!"
+  document.getElementById("pitchTony").style.color ="#007FFF";
+}else{
+  document.getElementById("pitchTony").innerHTML = "I like your tone!"
+  document.getElementById("pitchTony").style.color ="#6CC846";
+}
+
+var margin = {top: 10, right:20, bottom:30, left: 30},
+width = 300-margin.left-margin.right,
+height = 110 - margin.top-margin.bottom,
+tooltip = { width: 50, height: 50, x: 10, y: -30 };
+
+var bisectDate = d3.bisector(function(d) { return d.time; }).left;
+
+
+ var svg = d3.select("#graph").append("svg")
+    .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " 
+    + (height + margin.top + margin.bottom))
+   .append("g")
+     .attr("transform",
+           "translate(" + margin.left + "," + margin.top + ")");
+  
+
+var svg2 = d3.select("#graph2").append("svg")
+    .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " 
+    + (height + margin.top + margin.bottom))
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+    
+d3.csv("{{ url_for('static', filename=""+resultPath)}}", function(error, data) {
+  if (error) throw error;
+
+  // format the data
+  data.forEach(function(d) {
+      d.time = +d.time;
+      d.pitch = +d.pitch;
+      d.volume = +d.volume;
+  });
+
+
+
+  var x = d3.scaleLinear().range([0,width]);
+  var y = d3.scaleLinear().range([height,0]).nice();
+
+ var valueline2 = d3.line()
+         .curve(d3.curveBasis)
+     .x(function(d) { return x(d.time); })
+     .y(function(d) { return y(d.volume); });
+
+  // Scale the range of the data
+  x.domain(d3.extent(data, function(d) { return d.time; }));
+  y.domain([0, d3.max(data, function(d) { return d.volume; })]);
+
+
+ // volume liine
+  svg.append("path")
+      .data([data])
+      .attr("class", "line")
+      .attr("id", "volumeLine")
+      .style("stroke","#957CF6")
+      .attr("d", valueline2);
+
+  //Add the X Axis
+  svg.append("g")
+      .style("font", "5px times")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  // Add the Y Axis
+  svg.append("g")
+      .style("font", "5px times")
+      .call(d3.axisLeft(y));
+
+
+
+
+        var focus = svg.append("g")
+            .attr("class", "focus")
+            .style("display", "none");
+
+
+
+
+        svg.append("rect")
+            .attr("class", "overlay")
+            .attr("width", width)
+            .attr("height", height)
+            .on("mouseover", function() { focus.style("display", null); })
+            .on("mouseout", function() { focus.style("display", "none"); })
+            .on("mousemove", mousemove);
+
+
+        function mousemove() {
+            var x0 = x.invert(d3.mouse(this)[0]),
+                i = bisectDate(data, x0, 1),
+                d0 = data[i - 1],
+                d1 = data[i],
+                d = x0 - d0.time > d1.time - x0 ? d1 : d0;
+            focus.attr("transform", "translate(" + x(d.time) + "," + y(d.volume) + ")");
+            d3.select('#dataV').text("Volume:"+ d.volume);
+        }
+
+//##########line2
+
+  var x = d3.scaleLinear().range([0,width]).nice();
+  var y = d3.scaleLinear().range([height,0]).nice();
+
+
+  var valueline = d3.line()
+     .curve(d3.curveBasis)
+    .x(function(d) { return x(d.time); })
+    .y(function(d) { return y(d.pitch); })
+  // Scale the range of the data
+  x.domain(d3.extent(data, function(d) { return d.time; })).nice();
+  y.domain([0, d3.max(data, function(d) { return d.pitch; })]);
+
+  // Pitch Line
+  svg2.append("path")
+      .data([data])
+      .attr("class", "line")
+      .attr("id", "pitchLine")
+      .style("stroke","#FEC914")
+      .attr("d", valueline);
+      
+
+
+
+  svg2.append("g")
+      .style("font", "5px times")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  // Add the Y Axis
+  svg2.append("g")
+      .style("font", "5px times")
+      .call(d3.axisLeft(y));
+
+
+
+        var focus2 = svg2.append("g")
+            .attr("class", "focus2")
+            .style("display", "none");
+
+
+   
+
+        svg2.append("rect")
+            .attr("class", "overlay")
+            .attr("width", width)
+            .attr("height", height)
+            .on("mouseover", function() {focus2.style("display", null); })
+            .on("mouseout", function() { focus2.style("display", "none"); })
+            .on("mousemove", mousemove2);
+        function mousemove2() {
+            var x0 = x.invert(d3.mouse(this)[0]),
+                i = bisectDate(data, x0, 1),
+                d0 = data[i - 1],
+                d1 = data[i],
+                d = x0 - d0.time > d1.time - x0 ? d1 : d0;
+            focus2.attr("transform", "translate(" + x(d.time) + "," + y(d.pitch) + ")");
+            d3.select('#dataP').text("Pitch:"+ d.pitch);
+        }
+
+
+
+
+
+        // var buttonV = 1;
+        // var buttonP = 1;
+
+        //pitch, volume button     
+
+
+                // d3.select("#volumeB").on("click", function(){
+        //    // determine if current line is visible
+        //    var active   = volumeLine.active ? false : true,
+        //    newOpacity = active ? 0 : 1;
+        //    // hide or show the elements
+
+        //    focus.select(".circleV").style("opacity", newOpacity);
+        //    d3.select("#dataV").style("opacity", newOpacity);
+        //    d3.select("#volumeLine").style("opacity", newOpacity);
+        //    // update whether or not the elements are active
+        //    volumeLine.active = active;
+        //   if(buttonV==1){
+        //     document.getElementById("volumeB").style.background='#FFFFFF';
+        //     document.getElementById("volumeB").style.color='#A9A9A9';
+        //     buttonV=0;
+        //   }else{
+        //     document.getElementById("volumeB").style.background='#957CF6';
+        //     document.getElementById("volumeB").style.color='#000000';
+        //     buttonV=1;
+        //   }
+           
+        //  });
+
+     //    d3.select("#pitchB").on("click", function(){
+     //   // determine if current line is visible
+     //   var active   = pitchLine.active ? false : true,
+     //   newOpacity = active ? 0 : 1;
+     //   // hide or show the elements
+
+     //   d3.select("#pitchLine").style("opacity", newOpacity);
+     //   d3.select("#dataP").style("opacity", newOpacity);
+     //   // update whether or not the elements are active
+     //   pitchLine.active = active;
+     //           if(buttonP==1){     
+     //      document.getElementById("pitchB").style.background='#FFFFFF';
+     //        document.getElementById("pitchB").style.color='#A9A9A9';
+     //        buttonP=0;
+     //      }else{
+     //        document.getElementById("pitchB").style.background='#FEC914';
+     //        document.getElementById("pitchB").style.color='#000000';
+     //        buttonP=1;
+     //      }
+     // });
+});
+
+
+
+</script>
+
+
